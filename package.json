@@ -1,6 +1,6 @@
 {
   "name": "cfs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Conditional file streams",
   "main": "index.js",
   "scripts": {
