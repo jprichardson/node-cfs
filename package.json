@@ -4,6 +4,8 @@
   "description": "Conditional file streams",
   "main": "index.js",
   "scripts": {
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- --reporter list test.js",
+    "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
     "test": "standard && mocha"
   },
   "repository": {
@@ -27,7 +29,10 @@
   },
   "homepage": "https://github.com/jprichardson/node-cfs",
   "devDependencies": {
+    "coveralls": "^2.11.2",
     "fs-extra": "^0.16.3",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.1.0",
     "standard": "^2.3.2"
   }
 }

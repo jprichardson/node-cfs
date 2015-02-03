@@ -1,6 +1,9 @@
 Node.js: conditional file streams
 =================================
 
+[![build status](https://secure.travis-ci.org/jprichardson/node-cfs.svg)](http://travis-ci.org/jprichardson/node-cfs)
+[![Coverage Status](https://img.shields.io/coveralls/jprichardson/node-cfs.svg)](https://coveralls.io/r/jprichardson/node-cfs)
+
 Write to a file stream based upon some condition. Currently only writable fs streams. 
 
 
