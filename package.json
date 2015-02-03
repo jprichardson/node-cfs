@@ -1,0 +1,33 @@
+{
+  "name": "cfs",
+  "version": "0.0.1",
+  "description": "Conditional file streams",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jprichardson/node-cfs"
+  },
+  "keywords": [
+    "fs",
+    "file",
+    "write",
+    "writer",
+    "stream",
+    "streams",
+    "deterministic",
+    "conditional"
+  ],
+  "author": "JP Richardson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jprichardson/node-cfs/issues"
+  },
+  "homepage": "https://github.com/jprichardson/node-cfs",
+  "devDependencies": {
+    "fs-extra": "^0.16.3",
+    "standard": "^2.3.2"
+  }
+}
