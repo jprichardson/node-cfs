@@ -9,21 +9,23 @@ function createWriteStream (fn, options) {
   var ws = new WriteStream(defaultPath, options)
 
   var oldWrite = ws._write
-  ws._write = function(data, encoding, done) {
+  ws._write = function (data, encoding, done) {
     var newPath = fn(data, encoding)
 
     // no sense closing and opening if it's the same
-    if (newPath === ws.path)
+    if (newPath === ws.path) {
       return oldWrite.call(ws, data, encoding, done)
+    }
 
-    if (ws.fd == null)
+    if (ws.fd == null) {
       openNewPath()
-    else
+    } else {
       fs.close(ws.fd, openNewPath)
+    }
 
     function openNewPath () {
       ws.path = newPath
-      fs.open(ws.path, ws.flags, ws.mode, function(err, fd) {
+      fs.open(ws.path, ws.flags, ws.mode, function (err, fd) {
         if (err) {
           ws.destroy()
           ws.emit('error', err)

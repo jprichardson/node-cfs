@@ -7,12 +7,12 @@ var cfs = require('./')
 
 var TEST_DIR = ''
 
-describe('cfs', function() {
-  beforeEach(function() {
+describe('cfs', function () {
+  beforeEach(function () {
     TEST_DIR = createTestDir()
   })
 
-  it('should create each file and write to each appropriate file', function(done) {
+  it('should create each file and write to each appropriate file', function (done) {
     var evensFile = path.join(TEST_DIR, 'evens.txt')
     var oddsFile = path.join(TEST_DIR, 'odds.txt')
 
@@ -22,16 +22,17 @@ describe('cfs', function() {
       mode: parseInt('666', 8)
     }
 
-    var writer = cfs.createWriteStream(function(data, encoding) {
+    var writer = cfs.createWriteStream(function (data, encoding) {
       if (data == null) return null
 
-      if (+data.toString('utf8') % 2 === 0)
+      if (+data.toString('utf8') % 2 === 0) {
         return evensFile
-      else
+      } else {
         return oddsFile
+      }
     }, options)
 
-    writer.on('finish', function() {
+    writer.on('finish', function () {
       var evensData = fs.readFileSync(evensFile, 'utf8')
       var oddsData = fs.readFileSync(oddsFile, 'utf8')
 
@@ -58,7 +59,7 @@ function createTestDir () {
 
   if (fs.existsSync(dir)) {
     var files = fs.readdirSync(dir)
-    files.forEach(function(file) {
+    files.forEach(function (file) {
       return fs.removeSync(path.join(dir, file))
     })
   } else {
