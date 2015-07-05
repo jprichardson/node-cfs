@@ -4,7 +4,7 @@ var path = require('path')
 var ospath = require('ospath')
 var cfs = require('./')
 
-/* global beforeEach, describe, it */
+/* global after, beforeEach, describe, it */
 
 var TEST_DIR = ''
 
@@ -14,9 +14,14 @@ describe('cfs', function () {
     fs.emptyDir(TEST_DIR, done)
   })
 
+  after(function (done) {
+    fs.remove(TEST_DIR, done)
+  })
+
   it('should create each file and write to each appropriate file', function (done) {
     var evensFile = path.join(TEST_DIR, 'evens.txt')
     var oddsFile = path.join(TEST_DIR, 'odds.txt')
+    var MAX = 100000
 
     var options = {
       flags: 'a',
@@ -27,7 +32,7 @@ describe('cfs', function () {
     var writer = cfs.createWriteStream(function (data, encoding) {
       if (data == null) return null
 
-      if (+data.toString('utf8') % 2 === 0) {
+      if (parseInt(data.toString('utf8'), 10) % 2 === 0) {
         return evensFile
       } else {
         return oddsFile
@@ -35,16 +40,21 @@ describe('cfs', function () {
     }, options)
 
     writer.on('finish', function () {
-      var evensData = fs.readFileSync(evensFile, 'utf8')
-      var oddsData = fs.readFileSync(oddsFile, 'utf8')
+      var evensData = fs.readFileSync(evensFile, 'utf8').trim()
+      var oddsData = fs.readFileSync(oddsFile, 'utf8').trim()
+      evensData = evensData.split('\n').map(function (n) { return +n })
+      oddsData = oddsData.split('\n').map(function (n) { return +n })
 
-      assert.equal(evensData, [2, 4, 6, 8, 10].join('\n') + '\n')
-      assert.equal(oddsData, [1, 3, 5, 7, 9].join('\n') + '\n')
+      assert(evensData.reduce(function (prev, n) { return prev && (n % 2 === 0) }, true))
+      assert(oddsData.reduce(function (prev, n) { return prev && (n % 2 !== 0) }, true))
+
+      assert.deepEqual(evensData.slice(0, 5), [2, 4, 6, 8, 10])
+      assert.deepEqual(oddsData.slice(0, 5), [1, 3, 5, 7, 9])
 
       done()
     })
 
-    for (var i = 1; i <= 10; ++i) {
+    for (var i = 1; i <= MAX; ++i) {
       writer.write(i + '\n')
     }
 

@@ -48,6 +48,9 @@ logWriter.write(someLogData)
 Write data to different files depending upon what's being written.
 Write even numbers to `evens.txt` and odd numbers to `odds.txt`.
 
+No need to worry about opening a bunch of files. File descriptors
+are cached.
+
 ```js
 var cfs = require('cfs')
 
