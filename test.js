@@ -1,6 +1,7 @@
 var assert = require('assert')
 var fs = require('fs-extra')
 var path = require('path')
+var ospath = require('ospath')
 var cfs = require('./')
 
 /* global beforeEach, describe, it */
@@ -8,8 +9,9 @@ var cfs = require('./')
 var TEST_DIR = ''
 
 describe('cfs', function () {
-  beforeEach(function () {
-    TEST_DIR = createTestDir()
+  beforeEach(function (done) {
+    TEST_DIR = path.join(ospath.tmp(), 'cfs')
+    fs.emptyDir(TEST_DIR, done)
   })
 
   it('should create each file and write to each appropriate file', function (done) {
@@ -49,22 +51,3 @@ describe('cfs', function () {
     writer.end()
   })
 })
-
-function createTestDir () {
-  var tmp = require('os').platform().indexOf('win') === 0
-    ? process.env.HOME
-    : '/tmp'
-
-  var dir = path.join(tmp, 'cfs')
-
-  if (fs.existsSync(dir)) {
-    var files = fs.readdirSync(dir)
-    files.forEach(function (file) {
-      return fs.removeSync(path.join(dir, file))
-    })
-  } else {
-    fs.mkdirSync(dir)
-  }
-
-  return dir
-}

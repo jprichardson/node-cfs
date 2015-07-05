@@ -30,9 +30,10 @@
   "homepage": "https://github.com/jprichardson/node-cfs",
   "devDependencies": {
     "coveralls": "^2.11.2",
-    "fs-extra": "^0.16.3",
+    "fs-extra": "^0.21.0",
     "istanbul": "^0.3.5",
     "mocha": "^2.1.0",
+    "ospath": "^1.1.0",
     "standard": "4.x"
   }
 }
