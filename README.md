@@ -3,7 +3,7 @@ Node.js: conditional file streams
 
 [![build status](https://secure.travis-ci.org/jprichardson/node-cfs.svg)](http://travis-ci.org/jprichardson/node-cfs)
 [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-cfs/master.svg?label=windows%20build)](https://ci.appveyor.com/project/jprichardson/node-cfs/branch/master)
-[![Coverage Status](https://img.shields.io/coveralls/jprichardson/node-cfs.svg)](https://coveralls.io/r/jprichardson/node-cfs)
+[![Coverage Status](https://coveralls.io/repos/jprichardson/node-cfs/badge.svg?branch=master&service=github)](https://coveralls.io/github/jprichardson/node-cfs?branch=master)
 
 Writable file stream that can write to different files based upon the condition
 of what's being written. i.e. Intead of passing `filePath` as the first
