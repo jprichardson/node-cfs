@@ -5,6 +5,7 @@ var ospath = require('ospath')
 var cfs = require('./')
 
 /* global after, beforeEach, describe, it */
+// trinity: mocha
 
 var TEST_DIR = ''
 
