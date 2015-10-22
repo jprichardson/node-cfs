@@ -2,6 +2,7 @@ Node.js: conditional file streams
 =================================
 
 [![build status](https://secure.travis-ci.org/jprichardson/node-cfs.svg)](http://travis-ci.org/jprichardson/node-cfs)
+[![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-cfs/master.svg?label=windows%20build)](https://ci.appveyor.com/project/jprichardson/node-cfs/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/jprichardson/node-cfs.svg)](https://coveralls.io/r/jprichardson/node-cfs)
 
 Writable file stream that can write to different files based upon the condition
@@ -14,15 +15,15 @@ This saves you time because you no longer have to manage many different writable
 Use Case
 --------
 
-The biggest use case is to only have one writable fs stream that writes log files, except the log file
-path changes depending up the date.
+Best use case is to only have one writable fs stream that writes log files, except the log file
+path changes depending up the date or log data.
 
 
 
 Usage
 -----
 
-    npm install -g cfs
+    npm i --save cfs
 
 
 ### Example 1
@@ -31,12 +32,13 @@ Write log data to different files depending upon the date.
 
 ```js
 var cfs = require('cfs')
+var path = require('path')
 var ymd = require('ymd')
 
 var pathFn = function () {
   // get date in YYYY-MM-dd
   var date = ymd(new Date())
-  return date + '.txt'
+  return path.join('/tmp/logs/' + date + '.txt')
 }
 
 var logWriter = cfs.createWriteStream(pathFn, { flags: 'a' })
@@ -74,9 +76,9 @@ logWriter.write(someLogData)
 
 - `pathFunction`: A function that should return the path. Method signature `(data, encoding)`.
 - `options`: These are the standard options that you'd pass to [`fs.createWriteStream`](https://nodejs.org/api/fs.html#fs_fs_createwritestream_path_options).
+Also, `cacheOptions` which are the options that you'd pass to `[lru-cache](https://github.com/isaacs/node-lru-cache)`.
 
 License
 -------
 
 MIT
-

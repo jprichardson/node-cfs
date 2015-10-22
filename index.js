@@ -1,3 +1,4 @@
+var assign = require('object-assign')
 var fs = require('fs')
 var LRU = require('lru-cache')
 var os = require('os')
@@ -14,11 +15,13 @@ function createWriteStream (fn, options) {
     })
   }
 
-  var cache = LRU({
+  var cacheOptions = assign({
     max: 100,
     dispose: cacheDispose,
     maxAge: 1000 * 60 * 60
-  })
+  }, options.cacheOptions)
+
+  var cache = LRU(cacheOptions)
 
   ws.on('close', function () {
     cache.reset()
@@ -77,6 +80,9 @@ function createWriteStream (fn, options) {
       })
     })
   }
+
+  // expose fd cache
+  ws._cache = cache
 
   return ws
 }

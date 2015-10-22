@@ -37,6 +37,7 @@
     "standard": "4.x"
   },
   "dependencies": {
-    "lru-cache": "^2.6.5"
+    "lru-cache": "^2.6.5",
+    "object-assign": "^4.0.1"
   }
 }
