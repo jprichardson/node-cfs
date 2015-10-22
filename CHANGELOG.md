@@ -1,3 +1,9 @@
+0.3.0 / 2015-10-22
+------------------
+- add support for Node v4
+- add appveyor (windows ci)
+- expose `cacheOptions` and `_cache`
+
 0.2.0 / 2015-07-05
 ------------------
 - added file descriptor caching

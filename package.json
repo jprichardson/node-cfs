@@ -1,6 +1,6 @@
 {
   "name": "cfs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Conditional file streams",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,9 @@
     "stream",
     "streams",
     "deterministic",
-    "conditional"
+    "conditional",
+    "logs",
+    "logging"
   ],
   "author": "JP Richardson",
   "license": "MIT",
