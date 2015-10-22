@@ -47,18 +47,35 @@ function createWriteStream (fn, options) {
         return oldWrite.call(ws, data, encoding, done)
       }
 
-      fs.open(ws.path, ws.flags, ws.mode, function (err, fd) {
-        if (err) {
-          ws.destroy()
-          ws.emit('error', err)
-          return
-        }
+      // hacky solution for Node v4
+      try {
+        fd = fs.openSync(ws.path, ws.flags, ws.mode)
+      } catch (err) {
+        ws.destroy()
+        ws.emit('error', err)
+        return
+      }
 
-        ws.fd = fd
-        cache.set(newPath, fd)
-        oldWrite.call(ws, data, encoding, done)
-      })
+      ws.fd = fd
+      cache.set(newPath, fd)
+      oldWrite.call(ws, data, encoding, done)
     }
+  }
+
+  // won't see performance boost in Node v4
+  ws._writev = function (chunks, done) {
+    var len = chunks.length
+
+    function callback () {
+      len -= 1
+      if (len === 0) done()
+    }
+
+    chunks.forEach(function (c) {
+      setImmediate(function () {
+        ws._write(c.chunk, c.encoding, callback)
+      })
+    })
   }
 
   return ws
