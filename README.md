@@ -76,9 +76,11 @@ logWriter.write(someLogData)
 
 - `pathFunction`: A function that should return the path. Method signature `(data, encoding)`.
 - `options`: These are the standard options that you'd pass to [`fs.createWriteStream`](https://nodejs.org/api/fs.html#fs_fs_createwritestream_path_options).
-Also, `cacheOptions` which are the options that you'd pass to `[lru-cache](https://github.com/isaacs/node-lru-cache)`.
+Also, `cacheOptions` which are the options that you'd pass to [`lru-cache`](https://github.com/isaacs/node-lru-cache).
 
 License
 -------
 
 MIT
+
+Copyright (c) [JP Richardson](https://github.com/jprichardson)
