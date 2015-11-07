@@ -1,3 +1,7 @@
+0.4.0 / 2015-11-06
+------------------
+- ensure directory exists for the path returned
+
 0.3.0 / 2015-10-22
 ------------------
 - add support for Node v4
