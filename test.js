@@ -20,8 +20,9 @@ describe('cfs', function () {
   })
 
   it('should create each file and write to each appropriate file', function (done) {
-    var evensFile = path.join(TEST_DIR, 'evens.txt')
-    var oddsFile = path.join(TEST_DIR, 'odds.txt')
+    var someDir = Math.random().toString().slice(2)
+    var evensFile = path.join(TEST_DIR, someDir, 'evens.txt')
+    var oddsFile = path.join(TEST_DIR, someDir, 'odds.txt')
     var MAX = 100000
 
     var options = {

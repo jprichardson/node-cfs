@@ -1,6 +1,7 @@
 var assign = require('object-assign')
 var fs = require('fs')
 var LRU = require('lru-cache')
+var mkdirp = require('mkdirp')
 var os = require('os')
 var path = require('path')
 var WriteStream = fs.WriteStream
@@ -52,6 +53,8 @@ function createWriteStream (fn, options) {
 
       // hacky solution for Node v4
       try {
+        var dir = path.dirname(ws.path)
+        mkdirp.sync(dir)
         fd = fs.openSync(ws.path, ws.flags, ws.mode)
       } catch (err) {
         ws.destroy()
