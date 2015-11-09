@@ -2,7 +2,7 @@ var assert = require('assert')
 var fs = require('fs-extra')
 var path = require('path')
 var ospath = require('ospath')
-var cfs = require('./')
+var cfs = require('../')
 
 /* global after, beforeEach, describe, it */
 // trinity: mocha
