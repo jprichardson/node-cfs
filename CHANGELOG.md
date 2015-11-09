@@ -1,3 +1,11 @@
+0.5.0 / 2015-11-09
+------------------
+- completely refactored. Maybe should be a different module? The API is still the
+same. The major change is that before, `cfs` was **one** `fs.writeStream` that
+changed file descriptors / paths. Now, `cfs` is a `Writable` stream that manages
+multiple `fs.writeStreams`. The net effect is still the same. The API is still the
+same.
+
 0.4.0 / 2015-11-06
 ------------------
 - ensure directory exists for the path returned
