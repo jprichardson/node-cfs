@@ -32,7 +32,7 @@ describe('cfs', function () {
     }
 
     var writer = cfs.createWriteStream(function (data, encoding) {
-      if (data == null) return null
+      // if (data == null) return null
 
       if (parseInt(data.toString('utf8'), 10) % 2 === 0) {
         return evensFile
@@ -40,6 +40,8 @@ describe('cfs', function () {
         return oddsFile
       }
     }, options)
+
+    writer.on('error', done)
 
     writer.on('finish', function () {
       var evensData = fs.readFileSync(evensFile, 'utf8').trim()
@@ -52,6 +54,9 @@ describe('cfs', function () {
 
       assert.deepEqual(evensData.slice(0, 5), [2, 4, 6, 8, 10])
       assert.deepEqual(oddsData.slice(0, 5), [1, 3, 5, 7, 9])
+
+      assert.deepEqual(evensData.slice(MAX / 2 - 5), [MAX - 8, MAX - 6, MAX - 4, MAX - 2, MAX])
+      assert.deepEqual(oddsData.slice(MAX / 2 - 5), [MAX - 9, MAX - 7, MAX - 5, MAX - 3, MAX - 1])
 
       done()
     })
