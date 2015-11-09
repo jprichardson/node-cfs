@@ -32,7 +32,7 @@
   "homepage": "https://github.com/jprichardson/node-cfs",
   "devDependencies": {
     "coveralls": "^2.11.2",
-    "fs-extra": "^0.21.0",
+    "fs-extra": "^0.26.2",
     "istanbul": "^0.3.5",
     "mocha": "^2.1.0",
     "ospath": "^1.1.0",
