@@ -43,5 +43,8 @@
     "lru-cache": "^2.6.5",
     "mkdirp": "^0.5.1",
     "object-assign": "^4.0.1"
+  },
+  "engines": {
+    "node" : ">=4"
   }
 }
