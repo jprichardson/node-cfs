@@ -1,3 +1,8 @@
+0.6.0 / 2016-05-23
+------------------
+- **Breaking** drop support for anything below Node v4.
+- dropped `object-assign`
+
 0.5.0 / 2015-11-09
 ------------------
 - completely refactored. Maybe should be a different module? The API is still the

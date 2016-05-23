@@ -1,7 +1,7 @@
 {
   "name": "cfs",
   "description": "Conditional file streams",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "JP Richardson",
   "bugs": {
     "url": "https://github.com/jprichardson/node-cfs/issues"
