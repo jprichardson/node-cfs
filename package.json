@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
-    "fs-extra": "^0.26.2",
+    "fs-extra": "^0.30.0",
     "istanbul": "^0.3.5",
     "mocha": "^2.1.0",
     "ospath": "^1.1.0",
