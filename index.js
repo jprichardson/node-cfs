@@ -1,4 +1,3 @@
-var assign = require('object-assign')
 var fs = require('fs')
 var mkdirp = require('mkdirp')
 var path = require('path')
@@ -6,7 +5,7 @@ var LRU = require('lru-cache')
 var Writable = require('stream').Writable
 
 function createWriteStream (pathResolver, options) {
-  var cacheOptions = assign({
+  var cacheOptions = Object.assign({
     max: 100,
     dispose: cacheDispose,
     maxAge: 1000 * 60 * 60
