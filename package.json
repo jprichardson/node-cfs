@@ -1,50 +1,51 @@
 {
   "name": "cfs",
-  "version": "0.5.0",
   "description": "Conditional file streams",
-  "main": "index.js",
-  "scripts": {
-    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- --reporter list test.js",
-    "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
-    "lint": "standard",
-    "test": "standard && mocha tests/ -t 30000"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jprichardson/node-cfs"
-  },
-  "keywords": [
-    "fs",
-    "file",
-    "write",
-    "writer",
-    "stream",
-    "streams",
-    "deterministic",
-    "conditional",
-    "logs",
-    "logging"
-  ],
+  "version": "0.5.0",
   "author": "JP Richardson",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jprichardson/node-cfs/issues"
-  },
-  "homepage": "https://github.com/jprichardson/node-cfs",
-  "devDependencies": {
-    "coveralls": "^2.11.2",
-    "fs-extra": "^0.26.2",
-    "istanbul": "^0.3.5",
-    "mocha": "^2.1.0",
-    "ospath": "^1.1.0",
-    "standard": "4.x"
   },
   "dependencies": {
     "lru-cache": "^2.6.5",
     "mkdirp": "^0.5.1",
     "object-assign": "^4.0.1"
   },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "fs-extra": "^0.26.2",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.1.0",
+    "ospath": "^1.1.0",
+    "standard": "^7.1.0"
+  },
   "engines": {
-    "node" : ">=4"
+    "node": ">=4"
+  },
+  "homepage": "https://github.com/jprichardson/node-cfs",
+  "keywords": [
+    "conditional",
+    "deterministic",
+    "file",
+    "fs",
+    "logging",
+    "logs",
+    "stream",
+    "streams",
+    "write",
+    "writer"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jprichardson/node-cfs"
+  },
+  "scripts": {
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- --reporter list test.js",
+    "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
+    "lint": "standard",
+    "test": "npm run lint && npm run unit",
+    "unit": "mocha tests/ -t 30000"
   }
 }
